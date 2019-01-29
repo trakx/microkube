@@ -2,11 +2,14 @@ version: '3.6'
 
 services:
   gateway:
-    image: quay.io/datawire/ambassador:0.50.0-rc3
+    image: envoyproxy/envoy
     depends_on:
       - barong
     volumes:
-      - ../config/gateway:/ambassador/ambassador-config/:ro
+      - ../config/gateway:/etc/envoy/envoy.json
+    # ports:
+    #   - '10000:10000'
+    #   - '8080:8080'
     ports:
       - '8081:80'
       - '8877:8877'
