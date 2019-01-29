@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   gateway:
-    image: envoyproxy/envoy
+    image: envoyproxy/envoy:v1.9.0
     depends_on:
       - barong
     volumes:
@@ -13,6 +13,7 @@ services:
     ports:
       - '8081:80'
       - '8877:8877'
+    command: /usr/local/bin/envoy --v2-config-only -l info -c /etc/envoy/envoy.json
     labels:
       traefik.enable: true
       traefik.frontend.rule: "PathPrefix:/api/, /admin, /assets/;Host:www.<%= @config['app']['domain'] %>"
