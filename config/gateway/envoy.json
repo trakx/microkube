@@ -300,6 +300,11 @@
                                                             ],
                                                             "prefix": "/api/v2/ranger"
                                                         },
+                                                        "per_filter_config": {
+                                                            "envoy.buffer": {
+                                                                "disabled": true
+                                                            }
+                                                        },
                                                         "route": {
                                                             "cors": {
                                                                 "allow_methods": "POST, GET, OPTIONS",
